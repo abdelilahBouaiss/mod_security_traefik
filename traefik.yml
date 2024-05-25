@@ -1,0 +1,32 @@
+api:
+  dashboard: true
+
+entryPoints:
+  web:
+    address: ":80"
+
+providers:
+  file:
+    directory: /etc/traefik/dynamic
+
+experimental:
+  plugins:
+    modsecurity:
+      moduleName: "github.com/yourusername/modsecurity-plugin"
+      version: "v0.0.1"
+
+http:
+  routers:
+    my-router:
+      rule: "Host(`localhost`)"
+      entryPoints:
+        - web
+      middlewares:
+        - modsecurity
+
+  middlewares:
+    modsecurity:
+      plugin:
+        modsecurity:
+          ruleFile: "/etc/modsecurity/modsecurity.conf"
+
