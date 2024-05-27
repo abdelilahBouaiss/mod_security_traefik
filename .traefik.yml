@@ -1,0 +1,9 @@
+displayName: modsecurityplugin
+type: middleware
+
+import: github.com/AbdelilahBouaiss/modsecurityplugin
+
+summary: '[Demo] modsecurity pulgin'
+
+testData:
+  Foo: Bar
